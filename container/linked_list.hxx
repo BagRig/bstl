@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstddef>
+#include <iostream>
+
 
 namespace impl
 {
@@ -252,6 +254,19 @@ public:
         m_pHead = nullptr;
         m_pTail = nullptr;
         m_size = 0;
+    }
+
+    void resize (size_type n, const value_type& val = value_type())
+    {
+        if(n > m_size) {
+            do {
+                push_back(val);
+            } while (m_size < n);
+        } else {
+            do {
+                pop_back();
+            } while (n < m_size);
+        }
     }
 
 public:
